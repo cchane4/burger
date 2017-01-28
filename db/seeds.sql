@@ -1,11 +1,11 @@
-INSERT INTO burgers(id,burger_name,devoured,current_date)
-VALUES('NULL', 'ITALIAN BURGER', 'TRUE', NOW()); 
+INSERT INTO burgers(burger_name,devoured)
+VALUES('ITALIAN BURGER', TRUE); 
 
-INSERT INTO burgers(id,burger_name,devoured,current_date)
-VALUES('NULL', ' BIG MAC BURGER', 'FALSE', NOW());
+INSERT INTO burgers(burger_name,devoured)
+VALUES('BIG MAC BURGER', FALSE);
 
-INSERT INTO burgers(id,burger_name,devoured,current_date)
-VALUES('NULL', 'RUEBEN BURGER', 'TRUE', NOW()); 
+INSERT INTO burgers(burger_name,devoured)
+VALUES('RUEBEN BURGER', TRUE); 
 
-INSERT INTO burgers(id,burger_name,devoured,current_date)
-VALUES('NULL', 'SUPREME BURGER', 'FALSE', NOW()); 
+INSERT INTO burgers(burger_name,devoured)
+VALUES('SUPREME BURGER', FALSE); 

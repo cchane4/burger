@@ -1,28 +1,33 @@
 
 //DEPENDENCIES//
 var express = require('express'); 
-var bodyParser  = require('body-parser'); 
-var path = require('path'); 
-
+var bodyParser  = require('body-parser');
+var methodOverride = require("method-override");
 ///SETTING UP EXPRESS //
 var app = express(); 
-var PORT = 3000; 
-//SET UP EXPRESS FOR PARSING//
-app.use(bodyParser.json()); 
+var PORT = 3000;
+//SET UP EXPRESS FOR PARSING// 
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json()); 
 app.use(bodyParser.text()); 
 app.use (bodyParser.json({ type:'application/vnd.api+json'}));
-//SERVER LISTENING FOR REQUESTS///
-app.use('/', express.static(path.join(__dirname,'./public')));
+// Override WITH POST having ?_method=DELETE
+app.use(methodOverride("_method"));
 
-// this is a function bc module.exports is a function 
-var apiFn = require('./routing/apiRoutes.js'); 
-apiFn(app); 
-var htmlFn = require('./routing/htmlRoutes.js'); 
-htmlFn(app); 
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+//SERVING STATIC CONTENT 
+app.use(express.static( "public"));
+
+//IMPORT THE ROUTES AND GIVE THE SERVER ACCESS 
+var routes = require('./controllers/burgers_controller.js'); 
+app.use("/",routes); 
 
 //PORT TO LISTEN FOR REQUESTS 
-app.listen(3000,function(){ 
-	console.log('listening on port'+ PORT); 
+app.listen(3000, function(){ 
+	console.log('connected at port' + PORT);
 });
-// CHECK TO SEE IF THIS WORKS ^^^^^^
+ 
