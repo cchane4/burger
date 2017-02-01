@@ -1,25 +1,19 @@
 
-#submitButton{ 
-	width: 20%;
- }
 
-.dynamicDivs{ 
-	position: relative;
-	width: 100px; 
-	height:75px;
-	border: 5px;
-	border-style: solid;
-	display: inline-block;
- }
+
+h1{ 
+	color:#2956B2; 
+	font-size: 3em;
+}
 
  body { 
 	width: 100%; 
 	background-repeat: cover;
 	position: absolute;
 	text-align: center; 
+	background-color: #FFA500;
 } 
 
-form{ 
-	display: inline-block;
-	position: relative; 
+html{ 
+	text-align: center; 
 }
